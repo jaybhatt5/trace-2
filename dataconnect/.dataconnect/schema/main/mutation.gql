@@ -1,0 +1,562 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `AnalysisReport` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analysisReport_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput! @fdc_generated(from: "AnalysisReport", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `MediaContent` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  mediaContent_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: MediaContent_Data!
+  ): MediaContent_KeyOutput! @fdc_generated(from: "MediaContent", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Review` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Watchlist` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  watchlist_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Watchlist_Data!
+  ): Watchlist_KeyOutput! @fdc_generated(from: "Watchlist", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `AnalysisReport` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  analysisReport_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [AnalysisReport_Data!]!
+  ): [AnalysisReport_KeyOutput!]! @fdc_generated(from: "AnalysisReport", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `MediaContent` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  mediaContent_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [MediaContent_Data!]!
+  ): [MediaContent_KeyOutput!]! @fdc_generated(from: "MediaContent", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Review` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Watchlist` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  watchlist_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Watchlist_Data!]!
+  ): [Watchlist_KeyOutput!]! @fdc_generated(from: "Watchlist", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `AnalysisReport` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalysisReport`.
+  """
+  analysisReport_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput! @fdc_generated(from: "AnalysisReport", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `MediaContent` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MediaContent`.
+  """
+  mediaContent_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: MediaContent_Data!
+  ): MediaContent_KeyOutput! @fdc_generated(from: "MediaContent", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Review` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Watchlist` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Watchlist`.
+  """
+  watchlist_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Watchlist_Data!
+  ): Watchlist_KeyOutput! @fdc_generated(from: "Watchlist", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `AnalysisReport` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `AnalysisReport`.
+  """
+  analysisReport_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [AnalysisReport_Data!]!
+  ): [AnalysisReport_KeyOutput!]! @fdc_generated(from: "AnalysisReport", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `MediaContent` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `MediaContent`.
+  """
+  mediaContent_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [MediaContent_Data!]!
+  ): [MediaContent_KeyOutput!]! @fdc_generated(from: "MediaContent", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Review` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Watchlist` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Watchlist`.
+  """
+  watchlist_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Watchlist_Data!]!
+  ): [Watchlist_KeyOutput!]! @fdc_generated(from: "Watchlist", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `AnalysisReport` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `AnalysisReport` or `null` if not found.
+  """
+  analysisReport_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalysisReport_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalysisReport_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: AnalysisReport_Data!
+  ): AnalysisReport_KeyOutput @fdc_generated(from: "AnalysisReport", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `MediaContent` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `MediaContent` or `null` if not found.
+  """
+  mediaContent_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MediaContent_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MediaContent_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: MediaContent_Data!
+  ): MediaContent_KeyOutput @fdc_generated(from: "MediaContent", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Review` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Review` or `null` if not found.
+  """
+  review_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Watchlist` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Watchlist` or `null` if not found.
+  """
+  watchlist_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Watchlist_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Watchlist_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Watchlist_Data!
+  ): Watchlist_KeyOutput @fdc_generated(from: "Watchlist", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `AnalysisReport` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  analysisReport_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: AnalysisReport_Data!
+  ): Int! @fdc_generated(from: "AnalysisReport", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `MediaContent` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  mediaContent_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: MediaContent_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: MediaContent_Data!
+  ): Int! @fdc_generated(from: "MediaContent", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Review` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  review_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Review_Data!
+  ): Int! @fdc_generated(from: "Review", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Watchlist` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  watchlist_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Watchlist_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Watchlist_Data!
+  ): Int! @fdc_generated(from: "Watchlist", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `AnalysisReport` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  analysisReport_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: AnalysisReport_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: AnalysisReport_FirstRow
+  ): AnalysisReport_KeyOutput @fdc_generated(from: "AnalysisReport", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `MediaContent` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  mediaContent_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: MediaContent_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: MediaContent_FirstRow
+  ): MediaContent_KeyOutput @fdc_generated(from: "MediaContent", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Review` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  review_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Watchlist` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  watchlist_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Watchlist_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Watchlist_FirstRow
+  ): Watchlist_KeyOutput @fdc_generated(from: "Watchlist", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `AnalysisReport` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  analysisReport_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `MediaContent` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  mediaContent_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: MediaContent_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Review` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  review_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Review", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Watchlist` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  watchlist_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Watchlist_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Watchlist", purpose: DELETE_MULTIPLE)
+}

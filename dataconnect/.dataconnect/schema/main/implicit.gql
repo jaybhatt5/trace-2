@@ -1,0 +1,54 @@
+extend type AnalysisReport {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "AnalysisReport", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `AnalysisReport`.`mediaContent`. It must match the value of `MediaContent`.`id`. See `@ref` for how to customize it.
+  """
+  mediaContentId: UUID! @fdc_generated(from: "AnalysisReport.mediaContent", purpose: IMPLICIT_REF_FIELD)
+}
+extend type MediaContent {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "MediaContent", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `MediaContent`.`uploader`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  uploaderId: UUID @fdc_generated(from: "MediaContent.uploader", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Review {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Review", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`mediaContent`. It must match the value of `MediaContent`.`id`. See `@ref` for how to customize it.
+  """
+  mediaContentId: UUID! @fdc_generated(from: "Review.mediaContent", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Review.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type Watchlist {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Watchlist", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Watchlist`.`mediaContent`. It must match the value of `MediaContent`.`id`. See `@ref` for how to customize it.
+  """
+  mediaContentId: UUID! @fdc_generated(from: "Watchlist.mediaContent", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Watchlist`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Watchlist.user", purpose: IMPLICIT_REF_FIELD)
+}

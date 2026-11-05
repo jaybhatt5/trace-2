@@ -1,0 +1,141 @@
+{
+  "items": [
+    {
+      "id": "fc-1793781529848-777",
+      "title": "Election Commission clarification on Form 6 for re-inclusion in electoral rolls",
+      "claim": "The Election Commission clarified that no punitive action will be taken against previous electors whose names were deleted from draft rolls, and it is acceptable to use Form 6 for re-inclusion in the rolls.",
+      "verdict": "VERIFIED_TRUE",
+      "truthScore": 95,
+      "category": "nation",
+      "summary": "The Election Commission of India issued a clarification ensuring that voters whose names were erroneously or routinely deleted from draft electoral rolls face no penal consequences and can seamlessly apply for re-inclusion using Form 6.",
+      "explanation": "Primary guidelines and official statements from the Election Commission confirm that Form 6 is the standard statutory form meant for the inclusion of names in the electoral roll for fresh voters or those whose names were deleted. The EC's directive ensures that citizens facing deletions in draft rolls can re-apply without fear of adverse action.",
+      "keyFindings": [
+        "Form 6 is the correct application form for inclusion/re-inclusion of names in electoral rolls.",
+        "The Election Commission clarified that deleted electors will not face penal or negative action for re-applying.",
+        "The measure aims to safeguard democratic participation and correct anomalies in draft rolls."
+      ],
+      "sources": [
+        {
+          "name": "The Times of India",
+          "credibilityScore": 88,
+          "type": "Newspaper"
+        },
+        {
+          "name": "Election Commission of India (ECI) Guidelines",
+          "credibilityScore": 100,
+          "type": "Primary Government Source"
+        }
+      ],
+      "timestamp": "Just now",
+      "verifiedBy": "TRACE Gemini Grounding",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80",
+      "sharesCount": 71,
+      "tags": [
+        "Election Commission",
+        "Form 6",
+        "Electoral Rolls",
+        "Voter Rights",
+        "India"
+      ]
+    },
+    {
+      "id": "fc-1793781523010-483",
+      "title": "EC Clarification on Form 6 for Electoral Roll Re-inclusion",
+      "claim": "The Election Commission clarified that it is okay to use Form 6 for re-inclusion in rolls and no action will be taken against a previous elector whose name is deleted from draft rolls published.",
+      "verdict": "VERIFIED_TRUE",
+      "truthScore": 95,
+      "category": "nation",
+      "summary": "The Election Commission of India issued a clarification ensuring that citizens whose names were inadvertently or erroneously deleted from draft electoral rolls can use Form 6 to apply for re-inclusion without fear of punitive action.",
+      "explanation": "Primary guidelines and official statements from the Election Commission of India confirm that Form 6 is the standard statutory form meant for the inclusion of names in the electoral roll. When draft rolls are published, provisions exist for individuals whose names were left out or deleted to file claims and objections. The EC assured voters that using Form 6 for restoring wrongly deleted names is the correct procedure and entails no adverse legal or administrative consequences for the applicant.",
+      "keyFindings": [
+        "Form 6 is the designated application form for registering new voters and re-including previously registered voters whose names were deleted.",
+        "The Election Commission explicitly clarified that affected citizens face no penal action for applying to restore their deleted names.",
+        "This measure is designed to safeguard franchise rights during the revision of electoral rolls."
+      ],
+      "sources": [
+        {
+          "name": "Times of India",
+          "credibilityScore": 88,
+          "type": "Mainstream News"
+        },
+        {
+          "name": "Election Commission of India (ECI) Guidelines",
+          "credibilityScore": 99,
+          "type": "Primary Government Source"
+        }
+      ],
+      "timestamp": "Just now",
+      "verifiedBy": "TRACE Gemini Grounding",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80",
+      "sharesCount": 38,
+      "tags": [
+        "Election Commission",
+        "Form 6",
+        "Electoral Rolls",
+        "India",
+        "Voter Rights"
+      ]
+    }
+  ],
+  "stats": {
+    "totalClaimsChecked": 69,
+    "fakeNewsBusted": 31,
+    "deepfakesIntercepted": 11,
+    "mediaAuditsCompleted": 4,
+    "accuracyRate": 55.1,
+    "categoriesBreakdown": [
+      {
+        "category": "Politics",
+        "count": 2
+      },
+      {
+        "category": "Health & Science",
+        "count": 8
+      },
+      {
+        "category": "World News",
+        "count": 14
+      },
+      {
+        "category": "Technology",
+        "count": 1
+      },
+      {
+        "category": "Finance",
+        "count": 0
+      },
+      {
+        "category": "Technology & Finance",
+        "count": 1
+      },
+      {
+        "category": "Science & Space",
+        "count": 3
+      },
+      {
+        "category": "Health & Medicine",
+        "count": 1
+      },
+      {
+        "category": "Health & Medical",
+        "count": 1
+      },
+      {
+        "category": "General",
+        "count": 1
+      },
+      {
+        "category": "general",
+        "count": 3
+      },
+      {
+        "category": "technology",
+        "count": 1
+      },
+      {
+        "category": "nation",
+        "count": 2
+      }
+    ]
+  }
+}

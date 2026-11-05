@@ -1,0 +1,699 @@
+extend type AnalysisReport {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "AnalysisReport", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table.
+  """
+  _count: Int! @fdc_generated(from: "AnalysisReport.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `aiLikelihoodPercentage` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  aiLikelihoodPercentage_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.aiLikelihoodPercentage", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `detectionEngineVersion` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  detectionEngineVersion_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.detectionEngineVersion", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `flaggedEntities` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  flaggedEntities_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.flaggedEntities", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `mediaContentId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  mediaContentId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.mediaContentId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `reportDetails` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  reportDetails_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.reportDetails", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `AnalysisReport` table where the `timestamp` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  timestamp_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "AnalysisReport.timestamp", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `aiLikelihoodPercentage` field in the `AnalysisReport` table.
+  """
+  aiLikelihoodPercentage_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.aiLikelihoodPercentage", purpose: QUERY_SUM)
+  """
+  ✨ Average the `aiLikelihoodPercentage` field in the `AnalysisReport` table.
+  """
+  aiLikelihoodPercentage_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "AnalysisReport.aiLikelihoodPercentage", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `aiLikelihoodPercentage` field in the `AnalysisReport` table.
+  """
+  aiLikelihoodPercentage_min: Float @fdc_generated(from: "AnalysisReport.aiLikelihoodPercentage", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `timestamp` field in the `AnalysisReport` table.
+  """
+  timestamp_min: Timestamp @fdc_generated(from: "AnalysisReport.timestamp", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `aiLikelihoodPercentage` field in the `AnalysisReport` table.
+  """
+  aiLikelihoodPercentage_max: Float @fdc_generated(from: "AnalysisReport.aiLikelihoodPercentage", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `timestamp` field in the `AnalysisReport` table.
+  """
+  timestamp_max: Timestamp @fdc_generated(from: "AnalysisReport.timestamp", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "AnalysisReport.id", purpose: ENTITY_ID)
+}
+extend type MediaContent {
+  """
+  ✨ List `AnalysisReport` objects in a one-to-many relationship (where `AnalysisReport`.`mediaContent` is this object).
+  """
+  analysisReports_on_mediaContent(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: AnalysisReport_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [AnalysisReport_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: AnalysisReport_Having
+  ): [AnalysisReport!]! @fdc_generated(from: "AnalysisReport.mediaContent", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`mediaContent` is this object).
+  """
+  reviews_on_mediaContent(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Review_Having
+  ): [Review!]! @fdc_generated(from: "Review.mediaContent", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Watchlist` objects in a one-to-many relationship (where `Watchlist`.`mediaContent` is this object).
+  """
+  watchlists_on_mediaContent(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Watchlist_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Watchlist_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Watchlist_Having
+  ): [Watchlist!]! @fdc_generated(from: "Watchlist.mediaContent", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "MediaContent", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `MediaContent` table.
+  """
+  _count: Int! @fdc_generated(from: "MediaContent.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `aiScore` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  aiScore_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.aiScore", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `analysisStatus` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  analysisStatus_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.analysisStatus", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `providerMetadata` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  providerMetadata_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.providerMetadata", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `sourceUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  sourceUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.sourceUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `thumbnailUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  thumbnailUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.thumbnailUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `type` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  type_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.type", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `MediaContent` table where the `uploaderId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  uploaderId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "MediaContent.uploaderId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `aiScore` field in the `MediaContent` table.
+  """
+  aiScore_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "MediaContent.aiScore", purpose: QUERY_SUM)
+  """
+  ✨ Average the `aiScore` field in the `MediaContent` table.
+  """
+  aiScore_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "MediaContent.aiScore", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `aiScore` field in the `MediaContent` table.
+  """
+  aiScore_min: Float @fdc_generated(from: "MediaContent.aiScore", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `aiScore` field in the `MediaContent` table.
+  """
+  aiScore_max: Float @fdc_generated(from: "MediaContent.aiScore", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "MediaContent.id", purpose: ENTITY_ID)
+}
+extend type Review {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Review", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Review` table.
+  """
+  _count: Int! @fdc_generated(from: "Review.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `comment` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  comment_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.comment", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `evidenceLink` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  evidenceLink_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.evidenceLink", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `isExpertVerified` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  isExpertVerified_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.isExpertVerified", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `mediaContentId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  mediaContentId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.mediaContentId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `rating` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  rating_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.rating", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Review` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Review.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `rating` field in the `Review` table.
+  """
+  rating_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "Review.rating", purpose: QUERY_SUM)
+  """
+  ✨ Average the `rating` field in the `Review` table.
+  """
+  rating_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "Review.rating", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `createdAt` field in the `Review` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Review.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Minimum of the `rating` field in the `Review` table.
+  """
+  rating_min: Int @fdc_generated(from: "Review.rating", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Review` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Review.createdAt", purpose: QUERY_MAX)
+  """
+  ✨ Maximum of the `rating` field in the `Review` table.
+  """
+  rating_max: Int @fdc_generated(from: "Review.rating", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "Review.id", purpose: ENTITY_ID)
+}
+extend type User {
+  """
+  ✨ List `MediaContent` objects in a one-to-many relationship (where `MediaContent`.`uploader` is this object).
+  """
+  mediaContents_on_uploader(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: MediaContent_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [MediaContent_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: MediaContent_Having
+  ): [MediaContent!]! @fdc_generated(from: "MediaContent.uploader", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Review` objects in a one-to-many relationship (where `Review`.`user` is this object).
+  """
+  reviews_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Review_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Review_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Review_Having
+  ): [Review!]! @fdc_generated(from: "Review.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `Watchlist` objects in a one-to-many relationship (where `Watchlist`.`user` is this object).
+  """
+  watchlists_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Watchlist_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Watchlist_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Watchlist_Having
+  ): [Watchlist!]! @fdc_generated(from: "Watchlist.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `avatarUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  avatarUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.avatarUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `bio` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  bio_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.bio", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `reputationScore` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  reputationScore_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.reputationScore", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `username` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  username_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.username", purpose: QUERY_COUNT)
+  """
+  ✨ Sum the `reputationScore` field in the `User` table.
+  """
+  reputationScore_sum(
+    """
+    Set to true to sum the distinct values.
+    """
+    distinct: Boolean = false
+  ): Int @fdc_generated(from: "User.reputationScore", purpose: QUERY_SUM)
+  """
+  ✨ Average the `reputationScore` field in the `User` table.
+  """
+  reputationScore_avg(
+    """
+    Set to true to average the distinct values.
+    """
+    distinct: Boolean = false
+  ): Float @fdc_generated(from: "User.reputationScore", purpose: QUERY_AVG)
+  """
+  ✨ Minimum of the `reputationScore` field in the `User` table.
+  """
+  reputationScore_min: Int @fdc_generated(from: "User.reputationScore", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `reputationScore` field in the `User` table.
+  """
+  reputationScore_max: Int @fdc_generated(from: "User.reputationScore", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "User.id", purpose: ENTITY_ID)
+}
+extend type Watchlist {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Watchlist", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Watchlist` table.
+  """
+  _count: Int! @fdc_generated(from: "Watchlist.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Watchlist` table where the `dateAdded` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  dateAdded_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Watchlist.dateAdded", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Watchlist` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Watchlist.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Watchlist` table where the `mediaContentId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  mediaContentId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Watchlist.mediaContentId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Watchlist` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Watchlist.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `dateAdded` field in the `Watchlist` table.
+  """
+  dateAdded_min: Timestamp @fdc_generated(from: "Watchlist.dateAdded", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `dateAdded` field in the `Watchlist` table.
+  """
+  dateAdded_max: Timestamp @fdc_generated(from: "Watchlist.dateAdded", purpose: QUERY_MAX)
+  """
+  A generated field that is used for caching results in SDKs.
+  """
+  _id: ID! @fdc_generated(from: "Watchlist.id", purpose: ENTITY_ID)
+}
