@@ -1,18 +1,433 @@
-rules_version='2'
+rules_version = '2';
+
+// ===============================================================
+// TRACE / TruthLens AI Platform - Cloud Firestore Security Rules
+// ===============================================================
+//
+// Assumed Data Model & Architecture Specification:
+//
+// 1. Collection: users/{userId}
+//    Document ID: Firebase Authentication UID of the user
+//    Fields:
+//      - uid: string (optional; if present, must match userId and request.auth.uid, max 128 chars)
+//      - email: string (optional; valid email format, max 100 chars)
+//      - displayName: string (optional; max 100 chars)
+//      - phoneNumber: string (optional; max 30 chars)
+//      - photoURL: string (optional; valid URL format, max 2048 chars)
+//      - acceptedTermsVersion: string (optional; max 50 chars)
+//      - acceptedPrivacyVersion: string (optional; max 50 chars)
+//      - consentTimestamp: timestamp | string (optional; max 50 chars)
+//      - preferences: map (optional; max 50 keys)
+//      - createdAt: timestamp | string (optional; max 50 chars, immutable on update)
+//      - updatedAt: timestamp | string (optional; max 50 chars)
+//      - role: string (privileged: 'reader', 'admin', 'client', 'user', 'editor'; non-admins cannot set/escalate)
+//      - admin: bool (privileged boolean flag; non-admins cannot set/escalate)
+//      - isEditor: bool (privileged boolean flag; non-admins cannot set/escalate)
+//    Access:
+//      - Read: Owner (request.auth.uid == userId) or Admin (Strict PII isolation)
+//      - Create/Update: Owner only, validated; non-admins strictly prohibited from setting or modifying role/admin/isEditor
+//      - Delete: Owner or Admin (GDPR / Indian DPDP compliance)
+//
+// 2. Collection: users/{userId}/history/{historyId}
+//    Subcollection under the user document (Private personal analysis history)
+//    Document ID: Unique analysis scan/history ID
+//    Fields:
+//      - id: string (required; max 128 chars, immutable on update)
+//      - userId: string (required; must match userId and request.auth.uid, immutable on update)
+//      - type: string (required; one of ['deepfake', 'news_factcheck', 'media_ocr', 'text_nlp', 'fact_check'])
+//      - verdict: string (required; max 100 chars)
+//      - title: string (required; max 500 chars)
+//      - summary: string (required; max 5000 chars)
+//      - claim: string (optional; max 2000 chars)
+//      - originalFilename: string (optional; max 300 chars)
+//      - sourceUrl: string (optional; max 2048 chars)
+//      - verdictLabel: string (optional; max 100 chars)
+//      - evidence: list of strings (optional; max 50 items)
+//      - keyFindings: list of strings (optional; max 50 items)
+//      - sources: list of source maps (optional; max 50 items)
+//      - metadata: map (optional; max 50 keys, strictly prohibited from holding large raw media base64)
+//      - userPerspective: map (optional; max 10 keys)
+//      - timestamp: string | timestamp (max 100 chars)
+//      - createdAt: string | timestamp (optional; max 100 chars, immutable on update)
+//      - updatedAt: string | timestamp (optional; max 100 chars)
+//    Access:
+//      - Read (get, list): Owner only (request.auth.uid == userId). User A can NEVER read User B's history
+//      - Create: Owner only, strict field validation, prohibited base64 payloads to stop DoS/storage exhaustion
+//      - Update: Owner only, immutable id & userId, validated against the same domain rules
+//      - Delete: Owner only
+//
+// 3. Collection: editorial_news/{articleId} and public_news/{articleId}
+//    Document ID: Editorial fact check or public news article ID
+//    Fields:
+//      - id: string (optional; max 128 chars, immutable on update)
+//      - title: string (required; max 500 chars)
+//      - claim: string (required; max 2000 chars)
+//      - verdict: string (required; max 50 chars)
+//      - truthScore: number (optional; 0 to 100)
+//      - category: string (optional; max 100 chars)
+//      - summary: string (optional; max 5000 chars)
+//      - explanation: string (optional; max 10000 chars)
+//      - keyFindings: list of strings (optional; max 50 items)
+//      - sources: list of source maps (optional; max 50 items)
+//      - tags: list of strings (optional; max 50 items)
+//      - verifiedBy: string (optional; max 200 chars)
+//      - imageUrl: string (optional; max 2048 chars)
+//      - isDeepfakeChecked: bool (optional)
+//      - isAiTextChecked: bool (optional)
+//      - sharesCount: number (optional; >= 0)
+//      - author: string | map (optional; max 100 chars if string, max 20 keys if map)
+//      - status: string (optional; max 50 chars)
+//      - timestamp: string | timestamp (optional; max 100 chars)
+//      - createdAt: string | timestamp (optional; max 100 chars, immutable on update)
+//      - updatedAt: string | timestamp (optional; max 100 chars)
+//    Access:
+//      - Read: Publicly readable by all guests and authenticated users
+//      - Create/Update/Delete: Admin only (request.auth.token.admin == true)
+//
+// 4. Collection: user_perspectives/{perspectiveId}
+//    Document ID: Unique user perspective / credibility submission ID
+//    Fields:
+//      - id: string (optional; max 128 chars, immutable on update)
+//      - userId: string (required; matches request.auth.uid, immutable on update)
+//      - choice: string (required; enum: trustworthy, context, misleading, false, unsure, agree, disagree)
+//      - comment: string (optional; max 2000 chars)
+//      - articleId: string (optional; max 128 chars)
+//      - factCheckId: string (optional; max 128 chars)
+//      - claimId: string (optional; max 128 chars)
+//      - submittedAt: string | timestamp (optional; max 100 chars)
+//      - timestamp: string | timestamp (optional; max 100 chars)
+//      - createdAt: string | timestamp (optional; max 100 chars, immutable on update)
+//      - updatedAt: string | timestamp (optional; max 100 chars)
+//    Access:
+//      - Read: Owner (resource.data.userId == request.auth.uid) or Admin
+//      - Create: Authenticated user creating their own perspective (request.resource.data.userId == request.auth.uid)
+//      - Update: Owner only, immutable userId & createdAt, validated
+//      - Delete: Owner or Admin
+//
+// 5. Collection: system_stats/{statId}
+//    Document ID: Aggregated system statistics identifier (e.g. 'global')
+//    Fields:
+//      - id: string (optional; max 128 chars)
+//      - totalClaimsChecked: number (optional; >= 0)
+//      - fakeNewsBusted: number (optional; >= 0)
+//      - deepfakesIntercepted: number (optional; >= 0)
+//      - mediaAuditsCompleted: number (optional; >= 0)
+//      - accuracyRate: number (optional; 0 to 100)
+//      - categoriesBreakdown: list (optional; max 50 items)
+//      - updatedAt / lastUpdated: string | timestamp (optional; max 100 chars)
+//    Access:
+//      - Read: Publicly readable
+//      - Create/Update/Delete: Admin only
+//
+// 6. Fallback Rule:
+//    All unmentioned collections and paths are strictly denied by default.
+//
+// ===============================================================
 
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    // Check if the user is authenticated via Firebase Auth
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Verify if the current user possesses administrative authority
+    // Authority is derived strictly from trusted Firebase Auth custom claims or verified bootstrap email
+    function isAdmin() {
+      return isAuthenticated() &&
+        (request.auth.token.get('admin', false) == true ||
+         (request.auth.token.get('email_verified', false) == true &&
+          request.auth.token.get('email', '') in ['admin@trace.ai', 'editor@trace.ai']));
+    }
+
+    // Check if the authenticated user matches the specified userId
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Verify that designated immutable fields have not been modified during an update
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // Verify that the document contains only permitted field keys
+    function hasOnlyAllowedFields(data, fields) {
+      return data.keys().hasOnly(fields);
+    }
+
+    // Verify that all mandatory fields exist in the incoming document
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // Validate email format and bounded length
+    function isValidEmail(email) {
+      return email is string &&
+        email.size() >= 3 &&
+        email.size() <= 100 &&
+        email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+    }
+
+    // Validate URL format and bounded length
+    function isValidUrl(url) {
+      return url is string &&
+        url.size() <= 2048 &&
+        (url.matches('^https://.*') || url.matches('^http://.*'));
+    }
+
+    // ===============================================================
+    // Domain Validators (Applied to both create and update operations)
+    // ===============================================================
+
+    // Validate user profile schema, types, and resource limits
+    function isValidUser(data) {
+      let allowedFields = [
+        'uid', 'email', 'displayName', 'phoneNumber', 'photoURL',
+        'acceptedTermsVersion', 'acceptedPrivacyVersion', 'consentTimestamp',
+        'preferences', 'createdAt', 'updatedAt', 'role', 'admin', 'isEditor'
+      ];
+
+      return hasOnlyAllowedFields(data, allowedFields) &&
+        (!('uid' in data) || (data.uid is string && data.uid.size() <= 128 && data.uid == request.auth.uid)) &&
+        (!('email' in data) || isValidEmail(data.email)) &&
+        (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 100)) &&
+        (!('phoneNumber' in data) || (data.phoneNumber is string && data.phoneNumber.size() <= 30)) &&
+        (!('photoURL' in data) || isValidUrl(data.photoURL)) &&
+        (!('acceptedTermsVersion' in data) || (data.acceptedTermsVersion is string && data.acceptedTermsVersion.size() <= 50)) &&
+        (!('acceptedPrivacyVersion' in data) || (data.acceptedPrivacyVersion is string && data.acceptedPrivacyVersion.size() <= 50)) &&
+        (!('consentTimestamp' in data) || (data.consentTimestamp is timestamp || (data.consentTimestamp is string && data.consentTimestamp.size() <= 50))) &&
+        (!('preferences' in data) || (data.preferences is map && data.preferences.size() <= 50)) &&
+        (!('createdAt' in data) || (data.createdAt is timestamp || (data.createdAt is string && data.createdAt.size() <= 50))) &&
+        (!('updatedAt' in data) || (data.updatedAt is timestamp || (data.updatedAt is string && data.updatedAt.size() <= 50))) &&
+        (!('role' in data) || (data.role is string && data.role in ['reader', 'admin', 'client', 'user', 'editor'])) &&
+        (!('admin' in data) || (data.admin is bool)) &&
+        (!('isEditor' in data) || (data.isEditor is bool));
+    }
+
+    // Validate personal history schema, types, and prohibit massive base64 media payloads
+    function isValidUserHistory(data) {
+      let allowedFields = [
+        'id', 'userId', 'type', 'title', 'claim', 'originalFilename',
+        'sourceUrl', 'verdict', 'verdictLabel', 'summary', 'evidence',
+        'keyFindings', 'sources', 'metadata', 'userPerspective',
+        'timestamp', 'createdAt', 'updatedAt'
+      ];
+      let allowedTypes = ['deepfake', 'news_factcheck', 'media_ocr', 'text_nlp', 'fact_check'];
+
+      return hasOnlyAllowedFields(data, allowedFields) &&
+        hasRequiredFields(['id', 'userId', 'type', 'verdict', 'title', 'summary']) &&
+        ('timestamp' in data || 'createdAt' in data) &&
+        data.userId == request.auth.uid &&
+        data.id is string && data.id.size() >= 1 && data.id.size() <= 128 &&
+        data.type is string && data.type in allowedTypes &&
+        data.verdict is string && data.verdict.size() >= 1 && data.verdict.size() <= 100 &&
+        data.title is string && data.title.size() >= 1 && data.title.size() <= 500 &&
+        data.summary is string && data.summary.size() <= 5000 &&
+        // DoS mitigation: Explicitly forbid storing large raw base64 payloads
+        !data.keys().hasAny(['imageBase64', 'videoBase64', 'mediaBase64', 'frames']) &&
+        (!('claim' in data) || (data.claim is string && data.claim.size() <= 2000)) &&
+        (!('originalFilename' in data) || (data.originalFilename is string && data.originalFilename.size() <= 300)) &&
+        (!('sourceUrl' in data) || (data.sourceUrl is string && data.sourceUrl.size() <= 2048)) &&
+        (!('verdictLabel' in data) || (data.verdictLabel is string && data.verdictLabel.size() <= 100)) &&
+        (!('evidence' in data) || (data.evidence is list && data.evidence.size() <= 50)) &&
+        (!('keyFindings' in data) || (data.keyFindings is list && data.keyFindings.size() <= 50)) &&
+        (!('sources' in data) || (data.sources is list && data.sources.size() <= 50)) &&
+        (!('metadata' in data) || (
+          data.metadata is map &&
+          data.metadata.size() <= 50 &&
+          !data.metadata.keys().hasAny(['imageBase64', 'videoBase64', 'mediaBase64', 'frames'])
+        )) &&
+        (!('userPerspective' in data) || (data.userPerspective is map && data.userPerspective.size() <= 10)) &&
+        (!('timestamp' in data) || (data.timestamp is timestamp || (data.timestamp is string && data.timestamp.size() <= 100))) &&
+        (!('createdAt' in data) || (data.createdAt is timestamp || (data.createdAt is string && data.createdAt.size() <= 100))) &&
+        (!('updatedAt' in data) || (data.updatedAt is timestamp || (data.updatedAt is string && data.updatedAt.size() <= 100)));
+    }
+
+    // Validate editorial news schema, types, and realistic bounds
+    function isValidEditorialNews(data) {
+      let allowedFields = [
+        'id', 'title', 'claim', 'verdict', 'truthScore', 'category',
+        'summary', 'explanation', 'keyFindings', 'sources', 'timestamp',
+        'createdAt', 'updatedAt', 'verifiedBy', 'imageUrl',
+        'isDeepfakeChecked', 'isAiTextChecked', 'sharesCount', 'tags',
+        'author', 'status'
+      ];
+
+      return hasOnlyAllowedFields(data, allowedFields) &&
+        hasRequiredFields(['title', 'claim', 'verdict']) &&
+        data.title is string && data.title.size() >= 1 && data.title.size() <= 500 &&
+        data.claim is string && data.claim.size() <= 2000 &&
+        data.verdict is string && data.verdict.size() >= 1 && data.verdict.size() <= 50 &&
+        (!('id' in data) || (data.id is string && data.id.size() <= 128)) &&
+        (!('truthScore' in data) || (data.truthScore is number && data.truthScore >= 0 && data.truthScore <= 100)) &&
+        (!('category' in data) || (data.category is string && data.category.size() <= 100)) &&
+        (!('summary' in data) || (data.summary is string && data.summary.size() <= 5000)) &&
+        (!('explanation' in data) || (data.explanation is string && data.explanation.size() <= 10000)) &&
+        (!('verifiedBy' in data) || (data.verifiedBy is string && data.verifiedBy.size() <= 200)) &&
+        (!('imageUrl' in data) || (data.imageUrl is string && data.imageUrl.size() <= 2048)) &&
+        (!('sharesCount' in data) || (data.sharesCount is number && data.sharesCount >= 0)) &&
+        (!('isDeepfakeChecked' in data) || (data.isDeepfakeChecked is bool)) &&
+        (!('isAiTextChecked' in data) || (data.isAiTextChecked is bool)) &&
+        (!('status' in data) || (data.status is string && data.status.size() <= 50)) &&
+        (!('author' in data) || (
+          (data.author is string && data.author.size() <= 100) ||
+          (data.author is map && data.author.size() <= 20)
+        )) &&
+        (!('keyFindings' in data) || (data.keyFindings is list && data.keyFindings.size() <= 50)) &&
+        (!('sources' in data) || (data.sources is list && data.sources.size() <= 50)) &&
+        (!('tags' in data) || (data.tags is list && data.tags.size() <= 50)) &&
+        (!('timestamp' in data) || (data.timestamp is timestamp || (data.timestamp is string && data.timestamp.size() <= 100))) &&
+        (!('createdAt' in data) || (data.createdAt is timestamp || (data.createdAt is string && data.createdAt.size() <= 100))) &&
+        (!('updatedAt' in data) || (data.updatedAt is timestamp || (data.updatedAt is string && data.updatedAt.size() <= 100)));
+    }
+
+    // Validate user perspectives / feedback schema
+    function isValidUserPerspective(data) {
+      let allowedFields = [
+        'id', 'userId', 'choice', 'comment', 'articleId',
+        'factCheckId', 'claimId', 'submittedAt', 'timestamp',
+        'createdAt', 'updatedAt'
+      ];
+      let allowedChoices = ['trustworthy', 'context', 'misleading', 'false', 'unsure', 'agree', 'disagree'];
+
+      return hasOnlyAllowedFields(data, allowedFields) &&
+        hasRequiredFields(['userId', 'choice']) &&
+        data.userId is string && data.userId == request.auth.uid &&
+        data.choice is string && data.choice in allowedChoices &&
+        (!('id' in data) || (data.id is string && data.id.size() <= 128)) &&
+        (!('comment' in data) || (data.comment is string && data.comment.size() <= 2000)) &&
+        (!('articleId' in data) || (data.articleId is string && data.articleId.size() <= 128)) &&
+        (!('factCheckId' in data) || (data.factCheckId is string && data.factCheckId.size() <= 128)) &&
+        (!('claimId' in data) || (data.claimId is string && data.claimId.size() <= 128)) &&
+        (!('submittedAt' in data) || (data.submittedAt is timestamp || (data.submittedAt is string && data.submittedAt.size() <= 100))) &&
+        (!('timestamp' in data) || (data.timestamp is timestamp || (data.timestamp is string && data.timestamp.size() <= 100))) &&
+        (!('createdAt' in data) || (data.createdAt is timestamp || (data.createdAt is string && data.createdAt.size() <= 100))) &&
+        (!('updatedAt' in data) || (data.updatedAt is timestamp || (data.updatedAt is string && data.updatedAt.size() <= 100)));
+    }
+
+    // Validate system statistics schema and counters
+    function isValidSystemStats(data) {
+      let allowedFields = [
+        'id', 'totalClaimsChecked', 'fakeNewsBusted', 'deepfakesIntercepted',
+        'mediaAuditsCompleted', 'accuracyRate', 'categoriesBreakdown',
+        'updatedAt', 'lastUpdated'
+      ];
+
+      return hasOnlyAllowedFields(data, allowedFields) &&
+        (!('id' in data) || (data.id is string && data.id.size() <= 128)) &&
+        (!('totalClaimsChecked' in data) || (data.totalClaimsChecked is number && data.totalClaimsChecked >= 0)) &&
+        (!('fakeNewsBusted' in data) || (data.fakeNewsBusted is number && data.fakeNewsBusted >= 0)) &&
+        (!('deepfakesIntercepted' in data) || (data.deepfakesIntercepted is number && data.deepfakesIntercepted >= 0)) &&
+        (!('mediaAuditsCompleted' in data) || (data.mediaAuditsCompleted is number && data.mediaAuditsCompleted >= 0)) &&
+        (!('accuracyRate' in data) || (data.accuracyRate is number && data.accuracyRate >= 0 && data.accuracyRate <= 100)) &&
+        (!('categoriesBreakdown' in data) || (data.categoriesBreakdown is list && data.categoriesBreakdown.size() <= 50)) &&
+        (!('updatedAt' in data) || (data.updatedAt is timestamp || (data.updatedAt is string && data.updatedAt.size() <= 100))) &&
+        (!('lastUpdated' in data) || (data.lastUpdated is timestamp || (data.lastUpdated is string && data.lastUpdated.size() <= 100)));
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // 1. User Profiles
+    // Strictly isolate PII: only owner or verified admin may read
+    // Non-admins CANNOT set or alter privileged fields (role, admin, isEditor)
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+
+      allow create: if isOwner(userId) &&
+        isValidUser(request.resource.data) &&
+        (isAdmin() || !request.resource.data.keys().hasAny(['role', 'admin', 'isEditor']));
+
+      allow update: if isOwner(userId) &&
+        isValidUser(request.resource.data) &&
+        (isAdmin() || (
+          !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'admin', 'isEditor']) &&
+          areImmutableFieldsUnchanged(['uid', 'createdAt'])
+        ));
+
+      allow delete: if isOwner(userId) || isAdmin();
+
+      // 2. Personal Analysis History Subcollection
+      // Private by default: User A can NEVER read, create, update, or delete User B's history
+      match /history/{historyId} {
+        allow read: if isOwner(userId);
+
+        allow create: if isOwner(userId) &&
+          request.resource.data.userId == userId &&
+          isValidUserHistory(request.resource.data);
+
+        allow update: if isOwner(userId) &&
+          request.resource.data.userId == userId &&
+          areImmutableFieldsUnchanged(['id', 'userId', 'createdAt']) &&
+          isValidUserHistory(request.resource.data);
+
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // 3. Public Editorial News Feed
+    // Publicly readable for all readers, guests, and researchers
+    // Write restricted strictly to verified Administrators via custom claims
+    match /editorial_news/{articleId} {
+      allow read: if true;
+      allow create: if isAdmin() && isValidEditorialNews(request.resource.data);
+      allow update: if isAdmin() &&
+        isValidEditorialNews(request.resource.data) &&
+        areImmutableFieldsUnchanged(['id', 'createdAt']);
+      allow delete: if isAdmin();
+    }
+
+    // Public News Feed Alias (mirror of editorial_news)
+    match /public_news/{articleId} {
+      allow read: if true;
+      allow create: if isAdmin() && isValidEditorialNews(request.resource.data);
+      allow update: if isAdmin() &&
+        isValidEditorialNews(request.resource.data) &&
+        areImmutableFieldsUnchanged(['id', 'createdAt']);
+      allow delete: if isAdmin();
+    }
+
+    // 4. User Perspectives & Credibility Feedback
+    // Authenticated users can submit feedback on claims/articles
+    // Users can only view and mutate their own perspectives; Admins can audit/moderate
+    match /user_perspectives/{perspectiveId} {
+      allow read: if isAuthenticated() &&
+        (resource.data.userId == request.auth.uid || isAdmin());
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        isValidUserPerspective(request.resource.data);
+
+      allow update: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.userId == request.auth.uid &&
+        areImmutableFieldsUnchanged(['id', 'userId', 'createdAt']) &&
+        isValidUserPerspective(request.resource.data);
+
+      allow delete: if isAuthenticated() &&
+        (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // 5. System Anonymous Aggregated Statistics
+    // Publicly readable platform health and verification metrics
+    // Writes restricted exclusively to Administrators / backend services
+    match /system_stats/{statId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidSystemStats(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    // ===============================================================
+    // Fallback Rule: Default Deny All Other Paths
+    // ===============================================================
     match /{document=**} {
-      // This rule allows anyone with your database reference to view, edit,
-      // and delete all data in your database. It is useful for getting
-      // started, but it is configured to expire after 30 days because it
-      // leaves your app open to attackers. At that time, all client
-      // requests to your database will be denied.
-      //
-      // Make sure to write security rules for your app before that time, or
-      // else all client requests to your database will be denied until you
-      // update your rules.
-      allow read, write: if request.time < timestamp.date(2026, 11, 29);
+      allow read, write: if false;
     }
   }
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fc-1794914130624-320",
+    "userId": "YatlT0p3VbRwbnFcDNrwiKRJt723",
+    "type": "news_factcheck",
+    "title": "Claim Investigation: UK faces ‘Farage penalty’ if it pulls out of Brexit reset de...",
+    "claim": "UK faces ‘Farage penalty’ if it pulls out of Brexit reset deal. A clause in the food standards agreement due to be signed by Andy Burnham on Friday would force Britain to pay compensation if a future government backed out",
+    "sourceUrl": "https://www.thetimes.com/uk/politics/article/farage-penalty-brexit-reset-deal-26vk6gzmj",
+    "verdict": "UNVERIFIED",
+    "verdictLabel": "Unverified — Insufficient Signal",
+    "summary": "Unable to establish a reliable verdict with the available evidence.",
+    "evidence": [
+      "No verifiable official records or accredited journalistic investigations currently confirm or disprove this claim.",
+      "Primary evidence is currently absent or inconclusive."
+    ],
+    "keyFindings": [
+      "Insufficient reliable evidence is currently available to establish an evidence-backed verdict."
+    ],
+    "sources": [],
+    "metadata": {
+      "category": "general",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-17T11:15:30.625Z"
+  }
+]

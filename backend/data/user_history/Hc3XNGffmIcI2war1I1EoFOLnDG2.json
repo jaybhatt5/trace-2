@@ -1,0 +1,28 @@
+[
+  {
+    "id": "df-1794570662731",
+    "userId": "Hc3XNGffmIcI2war1I1EoFOLnDG2",
+    "type": "deepfake",
+    "title": "Deepfake Audit: Inconclusive Analysis",
+    "claim": "Evaluation limited due to placeholder or non-content text frames lacking visual features.",
+    "verdict": "Inconclusive",
+    "verdictLabel": "Inconclusive Analysis",
+    "summary": "Evaluation limited due to placeholder or non-content text frames lacking visual features.",
+    "evidence": [
+      "No visual imagery present for analysis",
+      "Synthetic text-on-solid background pattern"
+    ],
+    "keyFindings": [
+      "No visual imagery present for analysis",
+      "Synthetic text-on-solid background pattern"
+    ],
+    "sources": [],
+    "metadata": {
+      "mediaType": "video",
+      "aiProbability": 50,
+      "authenticityScore": 50,
+      "modelName": "TRACE Sentinel (gemini-3.5-flash + Local PyTorch CV)"
+    },
+    "timestamp": "2026-11-13T11:51:02.754Z"
+  }
+]

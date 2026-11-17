@@ -5,6 +5,11 @@
     "ignore": [
       "node_modules",
       ".git",
+      ".env*",
+      "AUDIT/**",
+      "eval/**",
+      "*.pem",
+      "*.key",
       "firebase-debug.log",
       "firebase-debug.*.log"
     ]
@@ -16,14 +21,11 @@
         "supportEmail": "support@trace.ai"
       },
       "emailPassword": true
-    },
-    "hashConfig": {
-      "algorithm": "SCRYPT",
-      "base64SignerKey": "Fe1/hPvEgMoLuxWnGtcO+cdxSQ8bgKq17idSMRdcMFQ39LZvS6KBmyUAx1C2IZQYcsAVIAgQvp9m3QbqPawT7w==",
-      "base64SaltSeparator": "Bw==",
-      "rounds": 8,
-      "memCost": 14
     }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   },
   "dataconnect": {
     "source": "dataconnect"

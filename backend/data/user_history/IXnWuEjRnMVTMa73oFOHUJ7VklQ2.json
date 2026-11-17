@@ -1,0 +1,316 @@
+[
+  {
+    "id": "fc-1794910372197-445",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "Claim Investigation: Global Semiconductor Consortium Outlines New Open Chip Packa...",
+    "claim": "Global Semiconductor Consortium Outlines New Open Chip Packaging Architecture Standards. Major technology leaders gathered at the International Microelectronics Summit to ratify standardized interconnects for high-efficiency AI compute silicon.",
+    "sourceUrl": "https://www.reuters.com/technology/",
+    "verdict": "UNVERIFIED",
+    "verdictLabel": "Unverified — Insufficient Signal",
+    "summary": "Unable to establish a reliable verdict with the available evidence.",
+    "evidence": [
+      "No verifiable official records or accredited journalistic investigations currently confirm or disprove this claim.",
+      "Primary evidence is currently absent or inconclusive."
+    ],
+    "keyFindings": [
+      "Insufficient reliable evidence is currently available to establish an evidence-backed verdict."
+    ],
+    "sources": [],
+    "metadata": {
+      "category": "general",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-17T10:12:52.199Z"
+  },
+  {
+    "id": "fc-1794652753710-182",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "Claim Investigation: Ground stop ordered for all airports nationwide for ‘reasons...",
+    "claim": "Ground stop ordered for all airports nationwide for ‘reasons of safety’. Much of the air traffic across the U.S. was shut down suddenly Friday after the Federal Aviation Administration ordered a nationwide ground stop for all departing flights “due to extraordinary circumstances and for reasons of safety.”",
+    "sourceUrl": "https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247",
+    "verdict": "UNVERIFIED",
+    "verdictLabel": "Unverified — Insufficient Signal",
+    "summary": "Unable to establish a reliable verdict with the available evidence.",
+    "evidence": [
+      "No verifiable official records or accredited journalistic investigations currently confirm or disprove this claim.",
+      "Primary evidence is currently absent or inconclusive."
+    ],
+    "keyFindings": [
+      "Insufficient reliable evidence is currently available to establish an evidence-backed verdict."
+    ],
+    "sources": [],
+    "metadata": {
+      "category": "general",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-14T10:39:13.716Z"
+  },
+  {
+    "id": "df-img-1794652669152",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "deepfake",
+    "title": "Deepfake Audit: Potentially Manipulated",
+    "claim": "This is a digital composite. While the two individuals appear to be in a real environment, the Spider-Man character is a CGI asset added later, evidenced by lighting and depth inconsistencies.",
+    "verdict": "Potentially Manipulated",
+    "verdictLabel": "Potentially Manipulated",
+    "summary": "This is a digital composite. While the two individuals appear to be in a real environment, the Spider-Man character is a CGI asset added later, evidenced by lighting and depth inconsistencies.",
+    "evidence": [
+      "Mismatched lighting on the central character compared to the human subjects",
+      "Unnatural edge blending between the CGI asset and the foreground",
+      "Inconsistent depth of field across the image plane",
+      "Lack of interactive shadows between the inserted figure and the seating"
+    ],
+    "keyFindings": [
+      "Mismatched lighting on the central character compared to the human subjects",
+      "Unnatural edge blending between the CGI asset and the foreground",
+      "Inconsistent depth of field across the image plane",
+      "Lack of interactive shadows between the inserted figure and the seating"
+    ],
+    "sources": [],
+    "metadata": {
+      "mediaType": "image",
+      "aiProbability": 35,
+      "authenticityScore": 65,
+      "modelName": "TRACE Sentinel (gemini-3-flash-preview + Local PyTorch CV)"
+    },
+    "timestamp": "2026-11-14T10:38:14.420Z"
+  },
+  {
+    "id": "df-img-1794652622085",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "deepfake",
+    "title": "Deepfake Audit: Likely Authentic",
+    "claim": "Forensic analysis indicates this is a genuine photograph. The image exhibits typical smartphone processing characteristics, such as HDR balancing and natural depth of field, without any indicators of synthetic generation.",
+    "verdict": "Likely Authentic",
+    "verdictLabel": "Likely Authentic",
+    "summary": "Forensic analysis indicates this is a genuine photograph. The image exhibits typical smartphone processing characteristics, such as HDR balancing and natural depth of field, without any indicators of synthetic generation.",
+    "evidence": [
+      "Consistent skin pore texture and facial hair detail.",
+      "Natural interaction between the subject's hands and the shirt collar.",
+      "Realistic shadow casting on the ground and clothing.",
+      "Standard JPEG compression artifacts consistent with social media sharing."
+    ],
+    "keyFindings": [
+      "Consistent skin pore texture and facial hair detail.",
+      "Natural interaction between the subject's hands and the shirt collar.",
+      "Realistic shadow casting on the ground and clothing.",
+      "Standard JPEG compression artifacts consistent with social media sharing."
+    ],
+    "sources": [],
+    "metadata": {
+      "mediaType": "image",
+      "aiProbability": 15,
+      "authenticityScore": 85,
+      "modelName": "TRACE Sentinel (gemini-3-flash-preview + Local PyTorch CV)"
+    },
+    "timestamp": "2026-11-14T10:37:28.397Z"
+  },
+  {
+    "id": "fc-1794572934909-82",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "Nvidia CEO Resignation and Espionage Allegations",
+    "claim": "Nvidia CEO Jensen Huang quit after an affair with a suspected Chinese spy.",
+    "sourceUrl": "https://www.thejakartapost.com/business/2026/11/13/nvidia-ceo-huang-quits-after-affair-with-suspected-china-spy?utm_source=(direct)&utm_medium=home_latest",
+    "verdict": "DEBUNKED",
+    "verdictLabel": "False / Fabricated",
+    "summary": "There is no evidence that Jensen Huang has resigned from Nvidia or was involved in a scandal involving espionage; the claim is based on a non-existent report dated in the future.",
+    "evidence": [
+      "Jensen Huang is the current and active CEO of Nvidia as of May 2024.",
+      "The provided URL contains a future date (2026) and does not lead to a live, legitimate news article in the current timeline.",
+      "Nvidia's Investor Relations and SEC filings show no records of leadership changes or scandals related to national security or espionage.",
+      "Primary news wire services have no record of these allegations or a resignation."
+    ],
+    "keyFindings": [
+      "Nvidia leadership page lists Jensen Huang as Founder, President, and CEO.",
+      "SEC Form 8-K filings for Nvidia Corporation show no notifications of executive departure as of the current date.",
+      "The claim uses a future-dated timestamp (2026) which is a common characteristic of 'future-fiction' or misinformation templates."
+    ],
+    "sources": [
+      {
+        "name": "Nvidia Executive Officers",
+        "publisher": "Nvidia Corporation",
+        "publicationDate": "2024-05-20",
+        "url": "https://nvidianews.nvidia.com/bios/jensen-huang",
+        "type": "Primary Source"
+      },
+      {
+        "name": "Nvidia SEC Filings (EDGAR)",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "publicationDate": "2024-05-20",
+        "url": "https://www.sec.gov/edgar/browse/?CIK=1045810",
+        "type": "Official Standard"
+      },
+      {
+        "name": "Nvidia Stock and Leadership Tracking",
+        "publisher": "Bloomberg Professional Services",
+        "publicationDate": "2024-05-20",
+        "type": "Primary Source"
+      }
+    ],
+    "metadata": {
+      "category": "Technology",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-13T12:28:54.912Z"
+  },
+  {
+    "id": "fc-1794572836221-488",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "Anwar Ibrahim's Ranking in 'The 500 Most Influential Muslims'",
+    "claim": "Anwar Ibrahim was ranked 13th in the 2027 list of the World's 500 Most Influential Muslims by the Royal Islamic Strategic Studies Centre, citing his economic focus and ASEAN mediation role.",
+    "sourceUrl": "https://www.freemalaysiatoday.com/category/nation/2026/11/13/anwar-ranked-13th-in-2027-list-of-world-s-500-most-influential-muslims",
+    "verdict": "DEBUNKED",
+    "verdictLabel": "Anachronistic / Debunked Timeline",
+    "summary": "The claim references a publication from '2027' and an article allegedly dated November 2026, which is chronologically impossible as these future editions have not been produced or published. While Malaysian Prime Minister Anwar Ibrahim has featured in past editions of 'The 500 Most Influential Muslims' (such as ranking 11th in the 2024 edition and 15th in the 2025 edition), the specific '2027 list' claim is fabricated or anachronistic.",
+    "evidence": [
+      "The publication 'The 500 Most Influential Muslims' is an annual report published by the Royal Islamic Strategic Studies Centre (RISSC).",
+      "Anwar Ibrahim was ranked 11th in the 2024 edition and 15th in the 2025 edition of the publication.",
+      "Claims citing publication dates in late 2026 or referencing a 2027 edition represent an impossible chronological timeline."
+    ],
+    "keyFindings": [
+      "The 2025 edition of The Muslim 500 ranked Anwar Ibrahim 15th worldwide.",
+      "The 2024 edition of The Muslim 500 ranked Anwar Ibrahim 11th worldwide.",
+      "No official '2027 edition' of The Muslim 500 exists yet."
+    ],
+    "sources": [
+      {
+        "name": "The 500 Most Influential Muslims Official Website",
+        "publisher": "Royal Islamic Strategic Studies Centre (RISSC)",
+        "url": "https://themuslim500.com/",
+        "type": "Primary Source"
+      }
+    ],
+    "metadata": {
+      "category": "World News",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-13T12:27:16.243Z"
+  },
+  {
+    "id": "fc-1794572749714-684",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "False Claim of Nvidia CEO Jensen Huang Resigning Over Spy Affair",
+    "claim": "Nvidia CEO Jensen Huang quit after an affair with a suspected Chinese spy.",
+    "sourceUrl": "https://www.thejakartapost.com/business/2026/11/13/nvidia-ceo-huang-quits-after-affair-with-suspected-china-spy?utm_source=(direct)&utm_medium=home_latest",
+    "verdict": "DEBUNKED",
+    "verdictLabel": "False / Fabricated News",
+    "summary": "Reports claiming Nvidia CEO Jensen Huang resigned following an affair with a Chinese spy are fabricated. Jensen Huang remains the CEO of Nvidia, and official company filings and announcements contain no record of such a resignation or scandal.",
+    "evidence": [
+      "Jensen Huang has not resigned and continues to serve as CEO of Nvidia.",
+      "No official regulatory filings (SEC Form 8-K) or company press releases indicate any executive leadership change.",
+      "The claims regarding a Chinese spy affair are entirely uncorroborated and fabricated."
+    ],
+    "keyFindings": [
+      "Nvidia's investor relations and SEC filings confirm Jensen Huang's active status as President and CEO.",
+      "Major financial and business news outlets (e.g., Reuters, Bloomberg, Associated Press) have reported no such event or investigation.",
+      "The story conflates accurate history (Nvidia's role in the AI boom) with a fabricated scandal headline."
+    ],
+    "sources": [
+      {
+        "name": "Nvidia Executive Leadership Directory",
+        "publisher": "Nvidia Corporation",
+        "url": "https://nvidianews.nvidia.com/biographies/jensen-huang",
+        "type": "Primary Source"
+      },
+      {
+        "name": "SEC EDGAR Company Filings - Nvidia Corp",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "url": "https://www.sec.gov/edgar/browse/?CIK=0001045810",
+        "type": "Official Standard"
+      }
+    ],
+    "metadata": {
+      "category": "Technology",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-13T12:25:49.724Z"
+  },
+  {
+    "id": "fc-1794571919125-44",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "Scientific Accuracy of Planetary Formation Models",
+    "claim": "Planetary formation begins with dust and gas sticking together and culminates with giant impacts of space rocks at high speeds, forming newborn worlds.",
+    "sourceUrl": "https://www.thestar.com.my/news/focus/2026/11/13/two-worlds-different-origins",
+    "verdict": "SUPPORTED_BY_EVIDENCE",
+    "verdictLabel": "Supported by Evidence",
+    "summary": "The statement accurately describes the widely accepted core accretion model of planet formation in astrophysics, which transitions from electrostatic accretion of dust particles to violent giant impacts between protoplanetary bodies.",
+    "evidence": [
+      "Initial planetary accretion is driven by low-velocity collisions of dust and gas mediated by non-gravitational surface forces.",
+      "Gravitational instability and runaway growth lead to the formation of planetesimals and protoplanets.",
+      "The final stage of terrestrial planet formation involves high-energy, high-velocity collisions between protoplanetary bodies."
+    ],
+    "keyFindings": [
+      "Core accretion is the standard model for terrestrial and giant planet core formation recognized by modern astrophysics.",
+      "Hypervelocity impacts during late-stage planetary accretion are well-documented in solar system geology, including the formation of the Earth-Moon system.",
+      "Observational evidence from circumstellar disks confirms the presence of dust agglomeration in young star systems."
+    ],
+    "sources": [
+      {
+        "name": "NASA Solar System Exploration: Planet Formation",
+        "publisher": "National Aeronautics and Space Administration (NASA)",
+        "publicationDate": "2023-01-15",
+        "url": "https://solarsystem.nasa.gov",
+        "type": "Official Standard"
+      },
+      {
+        "name": "The Giant Impact Hypothesis for the Origin of the Moon",
+        "publisher": "Nature Reviews Earth & Environment",
+        "publicationDate": "2020-03-10",
+        "url": "https://www.nature.com",
+        "type": "Peer Reviewed"
+      }
+    ],
+    "metadata": {
+      "category": "Health & Science",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-13T12:11:59.130Z"
+  },
+  {
+    "id": "fc-1794571885391-72",
+    "userId": "IXnWuEjRnMVTMa73oFOHUJ7VklQ2",
+    "type": "news_factcheck",
+    "title": "False Claim of Anthropic $1.3 Trillion IPO",
+    "claim": "Anthropic has filed for a $1.3 trillion IPO to test Wall Street's appetite for standalone frontier AI.",
+    "sourceUrl": "https://www.techtarget.com/news/anthropic-ipo-tests-wall-streets-appetite-for-standalone-frontier-ai/874588/",
+    "verdict": "DEBUNKED",
+    "verdictLabel": "False / Fabricated Claim",
+    "summary": "Claims that Anthropic is pursuing a $1.3 trillion IPO are entirely unfounded. Anthropic is a privately held company with a valuation estimated around $15 billion to $40 billion in recent private funding rounds, making a $1.3 trillion IPO valuation absurd and factually false.",
+    "evidence": [
+      "Anthropic remains a private company and has not submitted SEC filings for an Initial Public Offering.",
+      "Anthropic's actual private market valuation ranges between $15 billion and $40 billion following major investments from Amazon and Alphabet.",
+      "No credible financial news outlet or regulatory database reports a $1.3 trillion IPO proposal for Anthropic."
+    ],
+    "keyFindings": [
+      "No S-1 registration statement has been filed by Anthropic with the U.S. Securities and Exchange Commission (SEC).",
+      "Private market valuations for Anthropic remain under $50 billion as of 2024."
+    ],
+    "sources": [
+      {
+        "name": "SEC EDGAR Company Filings Database",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "publicationDate": "2024-01-01",
+        "url": "https://www.sec.gov/edgar/searchedgar/companysearch",
+        "type": "Primary Source"
+      },
+      {
+        "name": "Anthropic Investment and Valuation Tracking",
+        "publisher": "Reuters",
+        "publicationDate": "2024-03-27",
+        "url": "https://www.reuters.com",
+        "type": "Fact Checking Org"
+      }
+    ],
+    "metadata": {
+      "category": "Finance",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-13T12:11:25.395Z"
+  }
+]

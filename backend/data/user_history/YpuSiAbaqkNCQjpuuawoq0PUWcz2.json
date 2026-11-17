@@ -1,0 +1,82 @@
+[
+  {
+    "id": "df-1794920259079",
+    "userId": "YpuSiAbaqkNCQjpuuawoq0PUWcz2",
+    "type": "deepfake",
+    "title": "Deepfake Audit: Inconclusive — Insufficient Signal",
+    "claim": "The visual signal was analyzed across forensic sensor and landmark models.",
+    "verdict": "Inconclusive",
+    "verdictLabel": "Inconclusive — Insufficient Signal",
+    "summary": "The visual signal was analyzed across forensic sensor and landmark models.",
+    "evidence": [
+      "Natural camera sensor grain, facial landmark symmetry, and illumination vectors were validated.",
+      "Analysis evaluated image against known generative models and diffusion pipelines."
+    ],
+    "keyFindings": [
+      "Natural camera sensor grain, facial landmark symmetry, and illumination vectors were validated.",
+      "Analysis evaluated image against known generative models and diffusion pipelines."
+    ],
+    "sources": [],
+    "metadata": {
+      "mediaType": "image",
+      "aiProbability": 15,
+      "authenticityScore": 85,
+      "modelName": "TRACE Local Forensic Vision Sentinel"
+    },
+    "timestamp": "2026-11-17T12:57:39.083Z"
+  },
+  {
+    "id": "fc-1794920236687-798",
+    "userId": "YpuSiAbaqkNCQjpuuawoq0PUWcz2",
+    "type": "news_factcheck",
+    "title": "Claim Investigation: ‘Possible tornado’ wreaks havoc on NSW town. A suspected tor...",
+    "claim": "‘Possible tornado’ wreaks havoc on NSW town. A suspected tornado has ripped through a town on NSW’s Mid-North Coast destroying homes and leaving hundreds without power.",
+    "sourceUrl": "https://www.nine.com.au/australia-news/nsw/bureau-of-meteorology-possible-tornado-wreaks-havoc-on-nsw-south-west-rocks-town-20261117-p61etf.html",
+    "verdict": "UNVERIFIED",
+    "verdictLabel": "Unverified — Insufficient Signal",
+    "summary": "Unable to establish a reliable verdict with the available evidence.",
+    "evidence": [
+      "No verifiable official records or accredited journalistic investigations currently confirm or disprove this claim.",
+      "Primary evidence is currently absent or inconclusive."
+    ],
+    "keyFindings": [
+      "Insufficient reliable evidence is currently available to establish an evidence-backed verdict."
+    ],
+    "sources": [],
+    "metadata": {
+      "category": "general",
+      "verifiedBy": "TRACE Grounded Credibility Compass"
+    },
+    "timestamp": "2026-11-17T12:57:16.688Z"
+  },
+  {
+    "id": "df-img-1794916431657",
+    "userId": "YpuSiAbaqkNCQjpuuawoq0PUWcz2",
+    "type": "deepfake",
+    "title": "Deepfake Audit: Digital Composite / Partial Manipulation",
+    "claim": "Forensic analysis identifies a hybrid image where real human subjects have been combined with a digitally rendered or AI-generated character. The background and primary subjects exhibit natural sensor noise, but the central character displays inconsistent edge sharpness and lighting geometry.",
+    "verdict": "Potentially Manipulated",
+    "verdictLabel": "Digital Composite / Partial Manipulation",
+    "summary": "Forensic analysis identifies a hybrid image where real human subjects have been combined with a digitally rendered or AI-generated character. The background and primary subjects exhibit natural sensor noise, but the central character displays inconsistent edge sharpness and lighting geometry.",
+    "evidence": [
+      "Inconsistent lighting on the Spider-Man mask compared to the human subjects",
+      "Lack of contact shadows where the gloved hand meets the shoulder",
+      "Discrepancy in focal depth between the character and the immediate foreground",
+      "Sharp edge boundaries around the inserted character suggesting a mask/cutout"
+    ],
+    "keyFindings": [
+      "Inconsistent lighting on the Spider-Man mask compared to the human subjects",
+      "Lack of contact shadows where the gloved hand meets the shoulder",
+      "Discrepancy in focal depth between the character and the immediate foreground",
+      "Sharp edge boundaries around the inserted character suggesting a mask/cutout"
+    ],
+    "sources": [],
+    "metadata": {
+      "mediaType": "image",
+      "aiProbability": 45,
+      "authenticityScore": 55,
+      "modelName": "TRACE Sentinel (gemini-3-flash-preview + Local PyTorch CV)"
+    },
+    "timestamp": "2026-11-17T11:54:12.104Z"
+  }
+]

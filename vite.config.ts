@@ -35,13 +35,19 @@ const terminalLoggerPlugin = (): any => ({
 
 export default defineConfig(() => {
   return {
+    root: path.resolve(__dirname, 'frontend'),
+    publicDir: path.resolve(__dirname, 'frontend/public'),
+    // Restrict Vite client env injection so backend secrets (GEMINI_API_KEY, GNEWS_API_KEY, etc.) are never exposed
+    envPrefix: 'PUBLIC_',
     plugins: [react(), tailwindcss(), terminalLoggerPlugin()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(__dirname, 'frontend/src'),
       },
     },
     build: {
+      outDir: path.resolve(__dirname, 'dist'),
+      emptyOutDir: true,
       target: 'esnext',
       cssCodeSplit: true,
       minify: 'esbuild' as const,
@@ -56,6 +62,15 @@ export default defineConfig(() => {
       },
     },
     server: {
+      // Proxy API requests to backend Express server when running Vite standalone
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+
       // Allows dynamic subdomains and ngrok tunnel hosts to connect safely
       allowedHosts: [
         'moneybags-confused-exorcism.ngrok-free.dev',
@@ -70,8 +85,8 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {
         ignored: [
-          '**/data/**',
-          '**/data/*',
+          '**/backend/data/**',
+          '**/backend/data/*',
           '**/*.log',
           '**/dist/**',
           '**/scripts/**',
@@ -80,12 +95,10 @@ export default defineConfig(() => {
           '**/user-factchecks.json',
           (filePath: string) => {
             const norm = filePath.replace(/\\/g, '/');
-            if (norm.includes('/src/data/')) return false; // keep src/data/mockData.ts for developer HMR
-            if (norm.includes('/data/') || norm.endsWith('/data')) return true;
+            if (norm.includes('/frontend/src/data/')) return false;
+            if (norm.includes('/backend/data/') || norm.endsWith('/backend/data')) return true;
             if (norm.endsWith('.log')) return true;
-            if (
-              norm.includes('user-factchecks.json')
-            ) {
+            if (norm.includes('user-factchecks.json')) {
               return true;
             }
             return false;

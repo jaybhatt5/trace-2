@@ -1,0 +1,160 @@
+import { FactCheckItem, VerificationStats } from '../types';
+
+/**
+ * Editorial investigative articles curated by TRACE Editorial Board.
+ * These are public news fact-checks, completely isolated from private user scans.
+ */
+export const INITIAL_FACT_CHECKS: FactCheckItem[] = [
+  {
+    id: "trace-ed-101",
+    title: "Global Central Banks Emergency Cash Abolition Order",
+    claim: "All physical banknotes and cash are being declared invalid starting next month under an emergency mandate.",
+    verdict: "DEBUNKED",
+    verdictLabel: "Debunked — Evidence Contradicts It",
+    compassVerdict: "DEBUNKED",
+    category: "Finance",
+    summary: "Viral posts claim physical cash will be rendered illegal next month under an international treaty. Central bank declarations and financial regulators confirm no such order exists.",
+    explanation: "Audits of the Reserve Bank of India, US Federal Reserve, European Central Bank, and Bank for International Settlements records show cash remains legal tender with no demonetization or invalidation timetables planned.",
+    keyFindings: [
+      "No central banking authority has issued orders to eliminate physical currency.",
+      "The claim originated from a misattributed speculative blog discussing Central Bank Digital Currencies (CBDCs).",
+      "CBDC initiatives run parallel to cash and explicitly do not terminate cash circulation."
+    ],
+    whatWeFound: [
+      "Physical currency remains full legal tender worldwide.",
+      "Official banking gazettes contain zero reference to any cancellation schedule.",
+      "The viral screenshot used a fabricated government circular header."
+    ],
+    evidenceSupporting: [],
+    evidenceContradicting: [
+      "Official public statements from the Reserve Bank of India confirming cash continuity.",
+      "Federal Reserve Financial Services statement regarding currency issuance schedules for 2026-2027.",
+      "European Central Bank Cash 2030 strategy guaranteeing cash accessibility."
+    ],
+    whatIsStillUnknown: "The original creator of the forged circular graphic remains unidentified.",
+    sources: [
+      {
+        name: "Reserve Bank of India Official Clarifications",
+        publisher: "Reserve Bank of India (RBI)",
+        publicationDate: "2026-10-15",
+        url: "https://www.rbi.org.in",
+        type: "Official Standard"
+      },
+      {
+        name: "Reuters Fact Check Bureau",
+        publisher: "Reuters News Agency",
+        publicationDate: "2026-10-18",
+        url: "https://www.reuters.com/fact-check",
+        type: "Fact Checking Org"
+      }
+    ],
+    timestamp: "2 hours ago",
+    verifiedBy: "TRACE Chief Editorial Bureau",
+    imageUrl: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=1000&q=80",
+    sharesCount: 142,
+    tags: ["Finance", "Currency", "Debunked"]
+  },
+  {
+    id: "trace-ed-102",
+    title: "Breakthrough Solid-State Battery Commercialization Milestones",
+    claim: "Automotive researchers have demonstrated 1,000 km range solid-state cells entering pilot manufacturing.",
+    verdict: "SUPPORTED_BY_EVIDENCE",
+    verdictLabel: "Supported by Evidence",
+    compassVerdict: "SUPPORTED_BY_EVIDENCE",
+    category: "Technology",
+    summary: "Independent automotive testing and laboratory peer-reviews confirm solid-state battery prototypes with energy density exceeding 450 Wh/kg have entered pilot assembly line trials.",
+    explanation: "Multiple verified laboratory reports from Fraunhofer Institute and commercial announcements corroborate the demonstration of high-nickel sulphide electrolyte solid-state prototypes yielding over 1,000 kilometers on a single charge.",
+    keyFindings: [
+      "Independent testing verified energy densities between 450-500 Wh/kg.",
+      "Pilot manufacturing lines are active, though volume production is slated for 2027.",
+      "Peer-reviewed findings published in Nature Energy corroborate cathode stability."
+    ],
+    whatWeFound: [
+      "Real test data from accredited automotive engineering consortiums.",
+      "Pilot manufacturing facility operates with third-party monitoring."
+    ],
+    evidenceSupporting: [
+      "Peer-reviewed paper in Nature Energy documenting 1,200 cycle endurance.",
+      "Laboratory certification from Fraunhofer Institute for Solar Energy Systems."
+    ],
+    evidenceContradicting: [],
+    whatIsStillUnknown: "Commercial vehicle retail pricing and cold-weather long-term degradation beyond 3 years.",
+    sources: [
+      {
+        name: "Nature Energy Journal",
+        publisher: "Nature Publishing Group",
+        publicationDate: "2026-09-24",
+        url: "https://www.nature.com/nenergy",
+        type: "Peer Reviewed"
+      },
+      {
+        name: "International Energy Agency (IEA) Tech Bulletin",
+        publisher: "IEA",
+        publicationDate: "2026-10-02",
+        url: "https://www.iea.org",
+        type: "Primary Source"
+      }
+    ],
+    timestamp: "5 hours ago",
+    verifiedBy: "TRACE Technology Desk",
+    imageUrl: "https://images.unsplash.com/photo-1558441719-8b489c63f771?auto=format&fit=crop&w=1000&q=80",
+    sharesCount: 88,
+    tags: ["Technology", "Clean Energy", "Verified"]
+  },
+  {
+    id: "trace-ed-103",
+    title: "AI Act Compliance Standards Require Immediate App Removal",
+    claim: "Consumer AI apps without EU watermarking compliance must be deleted from app stores by tomorrow.",
+    verdict: "MOSTLY_TRUE_NEEDS_CONTEXT",
+    verdictLabel: "Mostly True — Needs Context",
+    compassVerdict: "MOSTLY_TRUE_NEEDS_CONTEXT",
+    category: "Technology",
+    summary: "Transparency requirements for generative AI media take effect, but regulatory timelines grant grace periods and do not require immediate consumer app deletions.",
+    explanation: "While the Artificial Intelligence Act mandates disclosure for synthetic deepfakes and AI text, enforcement protocols involve developer remediation windows and graduated penalty notices rather than immediate unilateral removal from consumer app stores.",
+    keyFindings: [
+      "Transparency mandates for AI-generated content are active in European jurisdictions.",
+      "App stores require developer compliance filings, not instant punitive deletion.",
+      "Grace periods of up to 90 days are standard for procedural compliance audits."
+    ],
+    whatWeFound: [
+      "The underlying regulation is authentic and legally binding.",
+      "The viral claim exaggerated the enforcement timeline and the immediacy of app deletions."
+    ],
+    evidenceSupporting: [
+      "Official Journal of the European Union published AI Act implementation timetable."
+    ],
+    evidenceContradicting: [
+      "Enforcement guidance clarifies multi-phase compliance audit procedures."
+    ],
+    whatIsStillUnknown: "Specific national enforcement interpretations across different member state regulators.",
+    sources: [
+      {
+        name: "EUR-Lex Official Law Portal",
+        publisher: "European Union Publications Office",
+        publicationDate: "2026-08-14",
+        url: "https://eur-lex.europa.eu",
+        type: "Official Standard"
+      }
+    ],
+    timestamp: "1 day ago",
+    verifiedBy: "TRACE Legal & Tech Desk",
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80",
+    sharesCount: 56,
+    tags: ["Technology", "Regulation", "Needs Context"]
+  }
+];
+
+export const INITIAL_STATS: VerificationStats = {
+  totalClaimsChecked: 148,
+  fakeNewsBusted: 42,
+  deepfakesIntercepted: 29,
+  mediaAuditsCompleted: 67,
+  accuracyRate: 98.4,
+  categoriesBreakdown: [
+    { category: 'World News', count: 48 },
+    { category: 'Technology', count: 39 },
+    { category: 'Health & Science', count: 31 },
+    { category: 'Finance', count: 18 },
+    { category: 'Politics', count: 12 },
+  ],
+};

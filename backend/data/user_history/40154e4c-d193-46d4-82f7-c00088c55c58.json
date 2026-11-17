@@ -1,0 +1,26 @@
+[
+  {
+    "id": "fc-1794924624043-861",
+    "userId": "40154e4c-d193-46d4-82f7-c00088c55c58",
+    "type": "news_factcheck",
+    "title": "Claim Investigation: IPL 2027 retentions: What all 10 teams could do as KKR, CSK ...",
+    "claim": "IPL 2027 retentions: What all 10 teams could do as KKR, CSK and MI weigh big changes and RCB back their title core. Ahead of IPL 2027 retentions, all 10 teams weigh costly contracts, trade-driven changes and squad balance, while champions RCB look to preserve their core | Cricket",
+    "sourceUrl": "https://www.hindustantimes.com/cricket/ipl-2027-retentions-what-all-10-teams-could-do-as-kkr-csk-and-mi-weight-big-changes-and-rcb-back-their-title-core-101794811824299.html",
+    "verdict": "UNVERIFIED",
+    "verdictLabel": "Unverified — Insufficient Signal",
+    "summary": "Unable to establish a reliable verdict with the available evidence.",
+    "evidence": [
+      "No verifiable official records or accredited journalistic investigations currently confirm or disprove this claim.",
+      "Primary evidence is currently absent or inconclusive."
+    ],
+    "keyFindings": [
+      "Insufficient reliable evidence is currently available to establish an evidence-backed verdict."
+    ],
+    "sources": [],
+    "metadata": {
+      "category": "general",
+      "verifiedBy": "TRACE Fallback Verification Sentinel (Offline Baseline)"
+    },
+    "timestamp": "2026-11-17T14:10:24.044Z"
+  }
+]
